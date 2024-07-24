@@ -113,11 +113,11 @@ L.Control.SideBySide = L.Control.extend({
     if (!this._map) {
       return this;
     }
-    if (this._leftLayer) {
-      this._leftLayer.getPane().style.clip = "";
+    if (this._map.getPane("left")) {
+      this._map.getPane("left").style.clip = "";
     }
-    if (this._rightLayer) {
-      this._rightLayer.getPane().style.clip = "";
+    if (this._rightLayer.getPane("right")) {
+      this._rightLayer.getPane("right").style.clip = "";
     }
     this._removeEvents();
     L.DomUtil.remove(this._container);
@@ -154,11 +154,11 @@ L.Control.SideBySide = L.Control.extend({
     this.fire("dividermove", { x: dividerX });
     var clipLeft = "rect(" + [nw.y, clipX, se.y, nw.x].join("px,") + "px)";
     var clipRight = "rect(" + [nw.y, se.x, se.y, clipX].join("px,") + "px)";
-    if (this._leftLayer) {
-      this._leftLayer.getPane().style.clip = clipLeft;
+    if (this._map.getPane("left")) {
+      this._map.getPane("left").style.clip = clipLeft;
     }
-    if (this._rightLayer) {
-      this._rightLayer.getPane().style.clip = clipRight;
+    if (this._map.getPane("right")) {
+      this._map.getPane("right").style.clip = clipRight;
     }
   },
 
