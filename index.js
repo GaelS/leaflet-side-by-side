@@ -56,7 +56,6 @@ function asArray(arg) {
 function noop() {}
 
 L.Control.SideBySide = L.Control.extend({
-  _map: null,
   options: {
     thumbSize: 42,
     padding: 0,
@@ -80,6 +79,7 @@ L.Control.SideBySide = L.Control.extend({
   includes: L.Evented.prototype || L.Mixin.Events,
 
   addTo: function (map) {
+    console.log("add map", { map });
     this.remove();
     this._map = map;
 
@@ -138,6 +138,7 @@ L.Control.SideBySide = L.Control.extend({
   },
 
   _updateClip: function () {
+    console.log("update clip", { __this: this, map: this._map });
     if (!this._map) {
       return this;
     }
@@ -160,6 +161,7 @@ L.Control.SideBySide = L.Control.extend({
   },
 
   _updateLayers: function () {
+    console.log("update layers", { __this: this, map: this._map });
     if (!this._map) {
       return this;
     }
